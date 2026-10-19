@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    PointManager Point;
+    Pointmanager Point;
     [SerializeField]
     float speed = 3f;
 
@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         spaceship = FindFirstObjectByType<Spaceship>();
+        Point = FindFirstObjectByType<Pointmanager>();
     }
 
     private void Update()
@@ -33,6 +34,7 @@ public class Bullet : MonoBehaviour
             print("träff");
             spaceship.ammo += 1;
             //ge 1 poäng
+            Point.player1Score += 1;
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
